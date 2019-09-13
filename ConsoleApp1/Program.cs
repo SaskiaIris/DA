@@ -6,29 +6,28 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            int[] birthdates = new int[100];
+            int[] highscores = new int[100];
             Random random = new Random();
 
-            for (int i = 0; i < birthdates.Length; i++)
+            for (int i = 0; i < highscores.Length; i++)
             {
-                birthdates[i] = random.Next(0, 10001);
+                highscores[i] = random.Next(0, 10001);
             }
 
-            for (int j = 0; j < birthdates.Length; j++)
+            for (int j = 0; j < highscores.Length; j++)
             {
-                for (int k = 0; k > birthdates.Length; k++)
+                for (int k = 0; k < highscores.Length; k++)
                 {
-                    if (k != j && birthdates[j] == birthdates[k])
+                    if (k != j && highscores[j] == highscores[k])
                     {
-                        Console.WriteLine("Yes");
+                        Console.WriteLine("No");                        
                     }
                     else
                     {
-                        Console.WriteLine("No");
+                        Console.WriteLine("Yes");
                     }
                 }
-
-            }          
+            }
         }
     }
 }
