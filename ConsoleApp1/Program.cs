@@ -4,45 +4,48 @@ namespace ConsoleApp1
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main(/*string[] args*/)
         {
-            int[] highscores = new int[100];
+            int[] highscores = new int[10000];
             Random random = new Random();
             int count = 0;
+            int randomIndex;
             bool isNotUnique;
-
-            for (int z = 0; z < 5000; z++)
+            for (int c = 0; c < 5000; c++)
             {
                 isNotUnique = false;
                 for (int i = 0; i < highscores.Length; i++)
                 {
-                    highscores[i] = random.Next(0, 10001);
+                    highscores[i] = 0;
+                }
+
+                for (int r = 0; r < 100; r++)
+                {
+                    randomIndex = random.Next(0, highscores.Length);
+                    highscores[randomIndex]++;
+                    //randomIndex = 0;
                 }
 
                 for (int j = 0; j < highscores.Length; j++)
                 {
-                    for (int k = 0; k < highscores.Length; k++)
+                    if (highscores[j] > 1)
                     {
-                        if (k != j && highscores[j] == highscores[k])
-                        {
-                            //Console.WriteLine("No");
-                            //count++;
-                            isNotUnique = true;
-                        }
-                        else
-                        {
-                            //Console.WriteLine("Yes");                           
-                        }
+                        //Console.WriteLine("Yes");
+                        //count++;
+                        isNotUnique = true;
+                    }
+                    else
+                    {
+                        //Console.WriteLine("No");
                     }
                 }
                 if(isNotUnique)
                 {
                     count++;
                 }
-                
             }
-            Console.WriteLine(count + " of the runned checks was not unique");
-            Console.WriteLine((count * 100) / 5000 + "% of the runned checks was not unique");
+            Console.WriteLine(count + " van de 5000 checks was niet uniek");
+            Console.WriteLine((count * 100) / 5000 + "% van de check was dus niet uniek");
         }
     }
 }
